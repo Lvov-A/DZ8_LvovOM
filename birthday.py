@@ -30,14 +30,8 @@ def week_control(bday, current_datetime):
     diff_next_week = (bday - next_week_Sat).days
     if 0 <= diff_next_week <= 2:
         return("Monday")
-    elif diff_next_week == 3:
-        return("Tuesday")
-    elif diff_next_week == 4:
-        return("Wednesday")
-    elif diff_next_week == 5:
-        return("Thursday")    
-    elif diff_next_week == 6:
-        return("Friday")
+    elif 3 <= diff_next_week <= 6:
+        return(bday.strftime('%A'))                              
     else:
         return("No result")    
 
@@ -47,7 +41,7 @@ def print_user_list(week_bday):
             print(f"{key}: {', '.join(value)}")
 
 def get_birthdays_per_week(users: list):
-    current_datetime = datetime.now()
+    current_datetime = datetime.now() #datetime(year=2022, month=11, day=22)     
     for name in users:
         bday = name["birthday"]
         bday_this_year = datetime(year=current_datetime.year, month=bday.month, day=bday.day)                  
